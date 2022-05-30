@@ -5,6 +5,7 @@ addEventListener("DOMContentLoaded", () => {
 
   const width = 4;
   let squares = [];
+  let score = 0;
 
   function createBoard() {
     for (let i = 0; i < width * width; i++) {
@@ -13,10 +14,6 @@ addEventListener("DOMContentLoaded", () => {
 
       gridDisplay.appendChild(square);
       squares.push(square);
-
-      //   squares.forEach((element) => {
-      //     gridDisplay.appendChild(element);
-      //   });
     }
     generate();
     generate();
@@ -30,6 +27,7 @@ addEventListener("DOMContentLoaded", () => {
 
     if (squares[randomNumber].innerHTML == 0) {
       squares[randomNumber].innerHTML = 2;
+      checkForGameOver();
     } else generate();
   }
 
@@ -52,7 +50,7 @@ addEventListener("DOMContentLoaded", () => {
 
         let filteredRow = row.filter((num) => num);
         let missing = 4 - filteredRow.length;
-        console.log(missing);
+
         let zeros = Array(missing).fill(0);
 
         let newRow = zeros.concat(filteredRow);
@@ -156,8 +154,12 @@ addEventListener("DOMContentLoaded", () => {
           parseInt(squares[i].innerHTML) + parseInt(squares[i + 1].innerHTML);
         squares[i].innerHTML = combineTotal;
         squares[i + 1].innerHTML = 0;
+
+        score += combineTotal;
+        scoreDisplay.innerHTML = score;
       }
     }
+    checkForWin();
   }
 
   function combineColumn() {
@@ -168,8 +170,12 @@ addEventListener("DOMContentLoaded", () => {
           parseInt(squares[i + width].innerHTML);
         squares[i].innerHTML = combineTotal;
         squares[i + width].innerHTML = 0;
+
+        score += combineTotal;
+        scoreDisplay.innerHTML = score;
       }
     }
+    checkForWin();
   }
 
   function control(e) {
@@ -183,6 +189,7 @@ addEventListener("DOMContentLoaded", () => {
       keyDown();
     }
   }
+
   document.addEventListener("keyup", control);
 
   function keyRight() {
@@ -208,5 +215,28 @@ addEventListener("DOMContentLoaded", () => {
     combineColumn();
     moveUp();
     generate();
+  }
+
+  function checkForWin() {
+    for (var i = 0; i < squares.length; i++) {
+      if (squares[i].innerHTML == 2048) {
+        resultDisplay.innerHTML = "You win !!!";
+        document.removeEventListener("keyup", control);
+      }
+    }
+  }
+
+  function checkForGameOver() {
+    let checkZero = 0;
+
+    for (var i = 0; i < squares.length; i++) {
+      if (squares[i].innerHTML == 0) {
+        checkZero++;
+      }
+    }
+    if (checkZero === 0) {
+      resultDisplay.innerHTML = "You lose !!!";
+      document.removeEventListener("keyup", control);
+    }
   }
 });
