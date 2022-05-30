@@ -13,12 +13,12 @@
 }
 
 .grid div {
-  background-color: rgb(255, 148, 148);
+  background-color: rgb(226, 255, 193);
   width: 100px;
   height: 100px;
   border: 1px solid black;
   text-align: center;
   line-height: 100px;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
 }
