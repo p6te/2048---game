@@ -39,11 +39,9 @@ body {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  min-width: 200px;
-  min-height: 200px;
-  width: 400px;
-  height: 400px;
-  background-color: aquamarine;
+  width: 500px;
+  height: 500px;
+  background-color: #8e8e9e;
   border-radius: 5px;
   padding: 5px;
 }
@@ -57,7 +55,56 @@ body {
   align-items: center;
   font-size: 40px;
   font-weight: bold;
-  border: 1px solid black;
   border-radius: 5px;
-  background-color: rgb(226, 255, 193);
+  transition: background-color 0.2s;
+}
+
+.zero {
+  background-color: rgb(230, 235, 240);
+}
+.num2 {
+  background-color: #d0ddb1;
+}
+.num4 {
+  background-color: #ffe1a8;
+}
+.num8 {
+  background-color: #a1b48f;
+}
+.num16 {
+  background-color: #e2c95c;
+}
+.num32 {
+  background-color: #b1dbc8;
+}
+.num64 {
+  background-color: #e26d5c;
+}
+.num128 {
+  background-color: #b473ac;
+}
+.num256 {
+  background-color: #723d46;
+}
+.num512 {
+  background-color: rgb(180, 201, 62);
+}
+.num1028 {
+  background-color: rgb(230, 216, 34);
+}
+.num2048 {
+  background-color: rgb(171, 211, 27);
+}
+
+.result {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  line-height: 100vh;
+  font-size: 100px;
+  font-weight: bold;
+  cursor: pointer;
+  color: aliceblue;
+  background-color: #00000071;
 }

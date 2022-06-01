@@ -17,6 +17,7 @@ addEventListener("DOMContentLoaded", () => {
     }
     generate();
     generate();
+    addClass();
   }
 
   createBoard();
@@ -29,6 +30,36 @@ addEventListener("DOMContentLoaded", () => {
       squares[randomNumber].innerHTML = 2;
       checkForGameOver();
     } else generate();
+  }
+
+  function addClass() {
+    for (let i = 0; i < width * width; i++) {
+      if (squares[i].innerHTML == 0) {
+        squares[i].className = "zero";
+      } else if (squares[i].innerHTML == 2) {
+        squares[i].className = "num2";
+      } else if (squares[i].innerHTML == 4) {
+        squares[i].className = "num4";
+      } else if (squares[i].innerHTML == 8) {
+        squares[i].className = "num8";
+      } else if (squares[i].innerHTML == 16) {
+        squares[i].className = "num16";
+      } else if (squares[i].innerHTML == 32) {
+        squares[i].className = "num32";
+      } else if (squares[i].innerHTML == 64) {
+        squares[i].className = "num64";
+      } else if (squares[i].innerHTML == 128) {
+        squares[i].className = "num128";
+      } else if (squares[i].innerHTML == 256) {
+        squares[i].className = "num256";
+      } else if (squares[i].innerHTML == 512) {
+        squares[i].className = "num512";
+      } else if (squares[i].innerHTML == 1028) {
+        squares[i].className = "num1028";
+      } else if (squares[i].innerHTML == 2048) {
+        squares[i].className = "num2048";
+      }
+    }
   }
 
   //swipe right
@@ -197,30 +228,35 @@ addEventListener("DOMContentLoaded", () => {
     combineRow();
     moveRight();
     generate();
+    addClass();
   }
   function keyLeft() {
     moveLeft();
     combineRow();
     moveLeft();
     generate();
+    addClass();
   }
   function keyDown() {
     moveDown();
     combineColumn();
     moveDown();
     generate();
+    addClass();
   }
   function keyUp() {
     moveUp();
     combineColumn();
     moveUp();
     generate();
+    addClass();
   }
 
   function checkForWin() {
     for (var i = 0; i < squares.length; i++) {
       if (squares[i].innerHTML == 2048) {
-        resultDisplay.innerHTML = "You win !!!";
+        resultDisplay.innerHTML = `You win !!! your score ${score}`;
+        resultDisplay.classList.add("result");
         document.removeEventListener("keyup", control);
       }
     }
@@ -235,8 +271,14 @@ addEventListener("DOMContentLoaded", () => {
       }
     }
     if (checkZero === 0) {
-      resultDisplay.innerHTML = "You lose !!!";
+      resultDisplay.innerHTML = `You lose !!! your score ${score}`;
+      resultDisplay.classList.add("result");
       document.removeEventListener("keyup", control);
     }
   }
+
+  resultDisplay.addEventListener("click", () => {
+    resultDisplay.innerHTML = "";
+    resultDisplay.classList.remove("result");
+  });
 });
