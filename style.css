@@ -19,31 +19,50 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 400px;
-  height: 80px;
-  margin-bottom: 30px;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 40px;
+  color: rgba(0, 0, 0, 0.4);
   font-weight: bold;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .score-title {
   color: rgba(0, 0, 0, 0.4);
-  font-size: 20px;
+  font-size: 15px;
 }
-#score {
-  font-size: 80px;
 
-  color: rgba(0, 0, 0, 0.4);
+.score-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.new-game {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(241, 241, 241);
+}
+.new-game:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 500px;
-  height: 500px;
+  width: 250px;
+  height: 250px;
   background-color: #8e8e9e;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 3px;
+  padding: 3px;
 }
 
 .grid div {
@@ -53,9 +72,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
+  font-size: 25px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #3b3b3b;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 3px;
   transition: background-color 0.2s;
 }
 
@@ -107,4 +128,38 @@ body {
   cursor: pointer;
   color: aliceblue;
   background-color: #00000071;
+}
+
+@media (min-width: 520px) {
+  .score-container {
+    width: 500px;
+    height: 80px;
+    margin-bottom: 40px;
+  }
+
+  .score-title {
+    font-size: 20px;
+  }
+  #score {
+    font-size: 80px;
+  }
+
+  .grid {
+    width: 500px;
+    height: 500px;
+
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .grid div {
+    font-size: 40px;
+
+    border-radius: 5px;
+  }
+
+  .result {
+    line-height: 100vh;
+    font-size: 100px;
+  }
 }

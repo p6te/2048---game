@@ -2,6 +2,8 @@ addEventListener("DOMContentLoaded", () => {
   const gridDisplay = document.querySelector(".grid");
   const scoreDisplay = document.querySelector("#score");
   const resultDisplay = document.querySelector("#result");
+  const newGameBtn = document.querySelector(".new-game");
+  const bestScore = document.querySelector("#best");
 
   const width = 4;
   let squares = [];
@@ -252,6 +254,17 @@ addEventListener("DOMContentLoaded", () => {
     addClass();
   }
 
+  function reset() {
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].innerHTML = 0;
+    }
+    score = 0;
+    scoreDisplay.innerHTML = score;
+    generate();
+    generate();
+    addClass();
+  }
+
   function checkForWin() {
     for (var i = 0; i < squares.length; i++) {
       if (squares[i].innerHTML == 2048) {
@@ -280,5 +293,8 @@ addEventListener("DOMContentLoaded", () => {
   resultDisplay.addEventListener("click", () => {
     resultDisplay.innerHTML = "";
     resultDisplay.classList.remove("result");
+    reset();
   });
+
+  newGameBtn.addEventListener("click", reset);
 });
