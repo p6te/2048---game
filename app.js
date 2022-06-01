@@ -3,11 +3,13 @@ addEventListener("DOMContentLoaded", () => {
   const scoreDisplay = document.querySelector("#score");
   const resultDisplay = document.querySelector("#result");
   const newGameBtn = document.querySelector(".new-game");
-  const bestScore = document.querySelector("#best");
+  const bestScoreText = document.querySelector("#best");
 
   const width = 4;
   let squares = [];
   let score = 0;
+  let localScore;
+  let localBestScore = 0;
 
   function createBoard() {
     for (let i = 0; i < width * width; i++) {
@@ -23,6 +25,7 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   createBoard();
+  reset();
 
   //generate a numer two randomly
   function generate() {
@@ -258,12 +261,27 @@ addEventListener("DOMContentLoaded", () => {
     for (var i = 0; i < squares.length; i++) {
       squares[i].innerHTML = 0;
     }
+
+    if (localStorage.getItem("bestScore")) {
+      localBestScore = localStorage.getItem("bestScore");
+
+      if (score > localBestScore) {
+        localStorage.setItem("bestScore", score);
+        bestScoreText.innerHTML = score;
+      }
+    } else {
+      localStorage.setItem("bestScore", score);
+      bestScoreText.innerHTML = score;
+      bestScoreText.innerHTML = score;
+    }
+
     score = 0;
     scoreDisplay.innerHTML = score;
     generate();
     generate();
     addClass();
   }
+
 
   function checkForWin() {
     for (var i = 0; i < squares.length; i++) {
