@@ -8,8 +8,7 @@ addEventListener("DOMContentLoaded", () => {
   const width = 4;
   let squares = [];
   let score = 0;
-  let localScore;
-  let localBestScore = 0;
+  let localBestScore;
 
   function createBoard() {
     for (let i = 0; i < width * width; i++) {
@@ -23,6 +22,10 @@ addEventListener("DOMContentLoaded", () => {
     generate();
     addClass();
   }
+
+  localBestScore = localStorage.getItem("bestScore");
+  bestScoreText.innerHTML = localBestScore;
+  console.log(localBestScore);
 
   createBoard();
   reset();
@@ -272,7 +275,6 @@ addEventListener("DOMContentLoaded", () => {
     } else {
       localStorage.setItem("bestScore", score);
       bestScoreText.innerHTML = score;
-      bestScoreText.innerHTML = score;
     }
 
     score = 0;
@@ -281,7 +283,6 @@ addEventListener("DOMContentLoaded", () => {
     generate();
     addClass();
   }
-
 
   function checkForWin() {
     for (var i = 0; i < squares.length; i++) {
