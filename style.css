@@ -5,7 +5,9 @@
   overflow: none;
 }
 body {
+  position: static;
   background-color: #dedbd2;
+  overflow: hidden;
 }
 .game {
   display: flex;

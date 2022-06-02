@@ -323,7 +323,7 @@ addEventListener("DOMContentLoaded", () => {
   document.addEventListener("touchstart", (e) => {
     startingX = e.touches[0].clientX;
     startingY = e.touches[0].clientY;
-    console.log(startingX, startingY);
+    
   });
 
   document.addEventListener("touchmove", (e) => {
