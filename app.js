@@ -23,13 +23,12 @@ addEventListener("DOMContentLoaded", () => {
     addClass();
   }
 
-  localBestScore = localStorage.getItem("bestScore");
-  bestScoreText.innerHTML = localBestScore;
-  console.log(localBestScore);
-
   createBoard();
   reset();
 
+  localBestScore = localStorage.getItem("bestScore");
+  bestScoreText.innerHTML = localBestScore;
+  console.log(localBestScore);
   //generate a numer two randomly
   function generate() {
     let randomNumber = Math.floor(Math.random() * squares.length);
@@ -316,4 +315,30 @@ addEventListener("DOMContentLoaded", () => {
   });
 
   newGameBtn.addEventListener("click", reset);
+
+  let startingX;
+  let startingY;
+  let movingX;
+  let movingY;
+  document.addEventListener("touchstart", (e) => {
+    startingX = e.touches[0].clientX;
+    startingY = e.touches[0].clientY;
+    console.log(startingX, startingY);
+  });
+
+  document.addEventListener("touchmove", (e) => {
+    movingX = e.touches[0].clientX;
+    movingY = e.touches[0].clientY;
+  });
+  document.addEventListener("touchend", (e) => {
+    if (startingX + 50 < movingX) {
+      keyRight();
+    } else if (startingX - 50 > movingX) {
+      keyLeft();
+    } else if (startingY + 50 < movingY) {
+      keyDown();
+    } else if (startingY - 50 > movingY) {
+      keyUp();
+    }
+  });
 });

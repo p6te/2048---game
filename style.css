@@ -111,16 +111,16 @@ body {
   background-color: #b473ac;
 }
 .num256 {
-  background-color: #723d46;
+  background-color: #8e77cf;
 }
 .num512 {
   background-color: rgb(180, 201, 62);
 }
 .num1028 {
-  background-color: rgb(230, 216, 34);
+  background-color: rgb(34, 230, 155);
 }
 .num2048 {
-  background-color: rgb(171, 211, 27);
+  background-color: rgb(219, 178, 103);
 }
 
 .result {
